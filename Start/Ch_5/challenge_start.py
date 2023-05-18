@@ -1,3 +1,6 @@
+from enum import Enum
+
+
 # Example file for Advanced Python: Language Features by Joe Marini
 # Programming challenge for Structural Pattern Matching
 
@@ -13,6 +16,8 @@
 # ---
 # Output:
 # Order Total Price
+
+
 
 test_orders = [
     [
@@ -39,3 +44,37 @@ test_orders = [
 ]
 
 # TODO: process each order
+
+for order in test_orders:
+    price = 0
+    print("----------------------")
+    for item in order:
+        description = ""
+        match item:
+            case "shirt"|"pants"|"jacket"|"dress" as garment, "L"|"M"|"S" as size,\
+             bool() as starch, bool() as same_day:
+                price += 12.95
+                if starch:
+                    price += 2.00
+                    description += "starch "
+                if same_day:
+                    price += 10.00
+                    description += "same_day"
+                print(f"Dry Cleaning: ({size}) {garment} {description}")
+                
+            case str() as desc, float() as weight:
+                if weight >= 15:
+                    price += 4.95 * weight * 0.9
+                else:
+                    price += 4.95 * weight
+                print(f"Wash/fold: {desc}, {weight} lbs")
+
+            case "comforter"|"cover" as item, bool() as dry_clean, "L" | "M" | "S" as size:
+                if dry_clean:
+                    description = "Dry clean"
+                price += 25.00
+                print(f"Blanket: ({size}) {item} {description} ")
+            case _:
+                print(f"{item}:Not recognized")
+
+    print(f"Total price: {price:.2f}\n----------------------")

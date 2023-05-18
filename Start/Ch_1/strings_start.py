@@ -10,8 +10,10 @@ s = "This is a string"
 print(s)
 
 # TODO: Try combining them.
+b=b.decode('utf-8')
 
 # TODO: Bytes and strings need to be properly encoded and decoded
 # before you can work on them together
-
+print(b+s)
 # TODO: encode the string as UTF-32
+print(s.encode('utf-32'))

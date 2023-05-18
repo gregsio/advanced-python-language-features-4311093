@@ -13,9 +13,20 @@
 
 
 def string_combiner(*args, unique=False):
+    """
+    string_combiner(*args, unique=False)
+    returns a string containing all arguments combined as one string
+    """
     result = ""
-
-    # YOUR CODE HERE
+    for the_str in args:
+        if isinstance(the_str,int|str) and not isinstance(the_str,bool):
+            if unique:
+                for letter in str(the_str):
+                   if letter not in result:
+                    result += letter
+            else:
+                result+=str(the_str)
+        
 
     return result
 

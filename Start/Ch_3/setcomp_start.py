@@ -11,3 +11,5 @@ print(ftemps1)
 
 # TODO: build a set from an input source
 s_temp = "The quick brown fox jumped over the lazy dog"
+s_temp_set = {x for x in s_temp if not x.isspace()}
+print("".join(s_temp_set))
